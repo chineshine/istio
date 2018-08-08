@@ -41,8 +41,8 @@
 ```
   kubectl create namespace istio-system
 ```
-以下两种方式任选一致
-本作者已经装了 `tiller`,所有选的是 `op2`  
+以下两种方式任选一致  
+本作者已经装了 `tiller`,所以选的是 `op2`  
 op1:
 ```
   helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
@@ -52,7 +52,8 @@ op2:
 ```
   helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 ```
-istio 默认使用的 service 类型是 loadBlancer,如果平台不支持 loadBlancer,请使用 nodePort  
+istio 默认使用的 service 类型是 loadBlancer  
+如果平台不支持 loadBlancer,请使用 nodePort    
 在 `helm` 命令末尾加上
 ```
   --set gateways.istio-ingressgateway.type=NodePort --set gateways.istio-egressgateway.type=NodePort
@@ -69,7 +70,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 --set prometheus.enabled=false \
 --set global.proxy.envoyStatsd.enabled=false
 ```
-确保 istio-pilot-*  istio-citadel-* pod 起来了
+确保 istio-pilot-*  istio-citadel-* 这两个 pod 起来了
 
 #### 卸载
 op1:
