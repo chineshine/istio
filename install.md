@@ -58,6 +58,8 @@ istio 默认使用的 service 类型是 loadBlancer
 ```
   --set gateways.istio-ingressgateway.type=NodePort --set gateways.istio-egressgateway.type=NodePort
 ```
+在装完之后,如果 `istio-ingressgateway` 这个 service 是 pending 状态,则代表集群不支持 loadBlancer  
+
 通信管理最小化设置(官方例子)
 ```
 helm install install/kubernetes/helm/istio --name istio --namespace istio-system \
