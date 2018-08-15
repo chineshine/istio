@@ -131,10 +131,10 @@
 |mixer.istio-telemetry.cpu.targetAverageUtilization	|80
 |mixer.prometheusStatsdExporter.hub	|docker.io/prom
 |mixer.prometheusStatsdExporter.tag	|v0.6.0
-|pilot.enabled	|true
-|pilot.replicaCount	|1
-|pilot.autoscaleMin	|1
-|pilot.autoscaleMax	|1
+|pilot.enabled	|true|
+|pilot.replicaCount	|1|
+|pilot.autoscaleMin	|1|
+|pilot.autoscaleMax	|1|
 |pilot.image	|pilot
 |pilot.sidecar	|true
 |pilot.traceSampling	|100.0
