@@ -26,7 +26,7 @@
 ```
   export PATH=$PWD/bin:$PATH
 ```
-
+## helm 部分
 #### 使用 helm 进行 安装
 先安装 helm,[helm 安装手册](https://github.com/chineshine/kubernetes/blob/master/helm/helm-install.md)   
 安装 istio 自定义的 api-server
@@ -95,6 +95,45 @@ op2:
   kubectl -n istio-system delete job --all
 ```
 删除 `istio` 自定义的 api
+```
+  kubectl delete -f install/kubernetes/helm/istio/templates/crds.yaml -n istio-system
+```
+
+## kubernetes 部分
+#### 使用 kubernetes 安装
+op1:  
+```
+  kubectl apply -f install/kubernetes/istio-demo.yaml
+```
+op2:使用默认的互通 TLS 认证(mutual TLS authentication) 安装
+```
+  kubectl apply -f install/kubernetes/istio-demo-auth.yaml
+```
+安装确认:
+确认服务
+```
+  kubectl -n istio-system get svc
+```
+确认这些服务已经正常启动并确认相关 POD
+```
+  istio-pilot
+  istio-ingressgateway
+  istio-policy
+  istio-telemetry
+  prometheus
+  istio-galley
+  istio-sidecar-injector <可选的>
+```
+#### 卸载
+op1:
+```
+  kubectl delete -f install/kubernetes/istio-demo.yaml
+```
+op2:
+```
+  kubectl delete -f install/kubernetes/istio-demo-auth.yaml
+```
+如果需要删除 crds
 ```
   kubectl delete -f install/kubernetes/helm/istio/templates/crds.yaml -n istio-system
 ```
